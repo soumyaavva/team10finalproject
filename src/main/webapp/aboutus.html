@@ -20,38 +20,61 @@ limitations under the License.
     <meta charset="UTF-8">
     <title>About Us</title>
     <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <script src="/js/navigation-loader.js"></script>
   </head>
   <body>
-    <nav>
-      <ul id="navigation">
-        <li><a href="/">Home</a></li>
-        <li><a href="/aboutus.html">About Our Team</a></li>
-      </ul>
+    <!--Navbar on top--!>
+    <div class="w3-top">
+      <div class="w3-bar w3-large w3-white w3-card" id="myNavbar">
+        <a class="w3-bar-item w3-button w3-wide">CODEU</a>
+        <!-- Right-sided navbar links -->
+        <div class="w3-right w3-hide-small">
+          <a href="/" class="w3-bar-item w3-button"><i class="fa fa-home"></i>HOME</a>
+          <a href="/aboutus.html" class="w3-bar-item w3-button"><i class = "fa
+          fa-user"></i> OUR TEAM</a>
+        </div>
+        <!-- Replace right-floated links with menu incon on small screens -->
+        <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right 
+        w3-hide-large w3-hide-medium" onclick="w3_open()"><i class="fa fa-bars"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Sidebar on small screens when clicking the menu icon -->
+    <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left 
+    w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+      <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item 
+      w3-button w3-large w3-padding-16">Close ×</a>
+      <a href="/" onclick="w3_close()" class="w3-bar-item w3-button">HOME</a>
+      <a href="/aboutus.html" onclick="w3_close()" class="w3-bar-item
+      w3-button">OUR TEAM</a>
     </nav>
-    <h1>About Our Team</h1>
-    <h2>Teammate A Name</h2>
-    <ul>
-      <li>Summer Feelz: </li>
-      <li>Aspirational Hobby: </li>
-      <li>Ask me About: </li>
-    </ul>
-    <h2>Teammate B Name</h2>
-    <ul>
-      <li>Summer Feelz: </li>
-      <li>Aspirational Hobby: </li>
-      <li>Ask me About: </li>
-    </ul>
-    <h2>Teammate C Name</h2>
-    <ul>
-      <li>Summer Feelz: </li>
-      <li>Aspirational Hobby: </li>
-      <li>Ask me About: </li>
-    </ul>
-    <h2>Teammate D Name (delete if you team only has 3 students) </h2>
-    <ul>
-      <li>Summer Feelz: </li>
-      <li>Aspirational Hobby: </li>
-      <li>Ask me About: </li>
-    </ul>
+    
+    <!--Content--!>
+    <div class="w3-container" style="padding:66px 150px 100px 150px">
+      <h1>About Our Team</h1>
+      <h2>Bonnie Dai</h2>
+      <ul>
+        <li>Summer Feelz: Laying on the beach watching the sunset :)</li>
+        <li>Aspirational Hobby: I've been really into photography lately and 
+        trying to go to the gym more often.</li>
+        <li>Ask me About: Anything from cats to interior design to my favorite
+        boba place in town!</li>
+      </ul>
+      <h2>Teammate B Name</h2>
+      <ul>
+        <li>Summer Feelz: </li>
+        <li>Aspirational Hobby: </li>
+        <li>Ask me About: </li>
+      </ul>
+      <h2>Soumya Avva</h2>
+       <ul>
+        <li>Summer Feelz: Excited, motivated, and happy!</li>
+        <li>Aspirational Hobby: Photography and editing</li>
+        <li>Ask me About: Traveling! </li>
+       </ul>
+    </div>
   </body>
 </html>

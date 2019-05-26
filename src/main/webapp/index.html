@@ -20,20 +20,47 @@ limitations under the License.
     <meta charset="UTF-8">
     <title>CodeU 2019 Starter Project</title>
     <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
     <script src="/js/navigation-loader.js"></script>
   </head>
   <body onload="addLoginOrLogoutLinkToNavigation();">
-    <nav>
-      <ul id="navigation">
-        <li><a href="/">Home</a></li>
-        <li><a href="/aboutus.html">About Our Team</a></li>
-      </ul>
+    <!--Navbar on top--!>
+    <div class="w3-top">
+      <div class="w3-bar w3-large w3-white w3-card" id="myNavbar">
+        <a class="w3-bar-item w3-button w3-wide">CODEU</a>
+        <!-- Right-sided navbar links -->
+        <div class="w3-right w3-hide-small">
+          <a href="/" class="w3-bar-item w3-button"><i class="fa fa-home"></i>HOME</a>
+          <a href="/aboutus.html" class="w3-bar-item w3-button"><i class = "fa
+          fa-user"></i> OUR TEAM</a>
+        </div>
+        <!-- Replace right-floated links with menu incon on small screens -->
+        <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right 
+        w3-hide-large w3-hide-medium" onclick="w3_open()"><i class="fa fa-bars"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Sidebar on small screens when clicking the menu icon -->
+    <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left 
+    w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+      <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item 
+      w3-button w3-large w3-padding-16">Close ×</a>
+      <a href="/" onclick="w3_close()" class="w3-bar-item w3-button">HOME</a>
+      <a href="/aboutus.html" onclick="w3_close()" class="w3-bar-item
+      w3-button">OUR TEAM</a>
     </nav>
+
+    <!-- Content --!>
+    <div class="w3-container" style="padding:66px 150px 100px 150px">
+    <div class="w3-container" align="center">
     <h1>CodeU Starter Project</h1>
-    <p>This is the CodeU starter project. Click the links above to login and visit your page.
-    You can post messages on your page, and you can visit other user pages if you have
-    their URL.</p>
-    <p>This is your code now! Feel free to make changes, and don't be afraid to get creative!
-    You could start by modifying this page to tell the world more about your team.</p>
+      <p> Main Page for CodeU Team 10 </p> </div>
+      <p> Hello, I am Bonnie! I am from Los Angeles and currently a second year at
+      UCSD studying Computer Science. I love to explore new places and trying
+      out new food so travel is one of my biggest passions. Some of my bucket list 
+      items include learning how to fly a plane and running a marathon. </p>
+    </div>
   </body>
 </html>
