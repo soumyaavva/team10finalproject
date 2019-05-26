@@ -16,7 +16,7 @@
 
 /* Prevent the page from becoming too wide. */
 body {
-  max-width: 600px;
+  font-family: {"Lato",sans-serif};
 }
 
 /* Remove bullet points from navigation bar. */
@@ -30,3 +30,4 @@ nav li {
   display: inline-block;
   margin-right: 10px
 }
+
