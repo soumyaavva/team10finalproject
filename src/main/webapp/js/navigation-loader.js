@@ -19,7 +19,7 @@
  * already logged in.
  */
 function addLoginOrLogoutLinkToNavigation() {
-  const navigationElement = document.getElementById('navigation');
+  const navigationElement = document.getElementById('myNavbar');
   if (!navigationElement) {
     console.warn('Navigation element not found!');
     return;
