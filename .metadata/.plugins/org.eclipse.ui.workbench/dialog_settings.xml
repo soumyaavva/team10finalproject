@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.internal.QuickAccess">
+		<item key="dialogHeight" value="670"/>
+		<item key="dialogWidth" value="742"/>
+		<list key="orderedElements">
+			<item value="search.in.help"/>
+			<item value="org.eclipse.ui.navigator.ProjectExplorer"/>
+		</list>
+		<list key="orderedProviders">
+			<item value="org.eclipse.ui.actions"/>
+			<item value="org.eclipse.e4.ui.parts"/>
+		</list>
+		<list key="textEntries">
+			<item value="1"/>
+			<item value="1"/>
+		</list>
+		<list key="textArray">
+			<item value="deselect workingset"/>
+			<item value="project exp"/>
+		</list>
+	</section>
+	<section name="ImportExportAction">
+	</section>
+	<section name="NewWizardAction">
+	</section>
+</section>
