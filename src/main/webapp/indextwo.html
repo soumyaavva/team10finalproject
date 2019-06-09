@@ -1,27 +1,81 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Hello Google Maps</title>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6Y0-tcNsyplbk2-NszcTxuxCcC_HGQb8"></script>
+  <title>Dog Parks</title>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6Y0-tcNsyplbk2-NszcTxuxCcC_HGQb8"
+  ></script>
   <script>
     function createMap(){
       const map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 37.422, lng: -122.084},
-        zoom: 16
+        zoom: 16, 
+        mapTypeId: 'hybrid', 
+        heading: 90, 
+        tilt: 45
       });
+      
+      addLandmark(map, 37.401620, -122.113010, 'Village Green Dog Park',
+    		  'Village Green Dog Park' )
+ 	  addLandmark(map, 37.426770,-122.109860, 'Mitchell Park',
+      'Mitchell Park')
+      addLandmark(map, 37.363820, -122.039650, 'Las Palmas Dog Park',
+      'Las Palmas Dog Park');
+      addLandmark(map, 37.504530,  -121.997770, 'CentralParkDogPark',
+    		  'Central Park Dog Park')
+ 	  addLandmark(map, 37.268720, -121.951580, 'LosGatos',
+ 			 'Los Gatos Creek County Dog Park' )
+      addLandmark(map, 37.485150, -122.226200, 'MainStreet',
+    		  'Main Street Dog Agility Park');
+      addLandmark(map, 37.259950, -121.917800, 'RoyMButcher',
+    		  'Roy M Butcher Dog Park' )
+ 	  addLandmark(map, 37.259950, -122.159460, 'WillowOaks',
+ 		     'This is Stan, the T-Rex statue.')
+      addLandmark(map, 37.361090, -122.151200, 'WestwindCommunity',
+    		  'Westwind Community Barn' );
+}
+
+
+      function addLandmark(map, lat, lng, title, description){
+      const marker = new google.maps.Marker({
+      position: {lat: lat, lng: lng},
+      map: map,
+      title: title
+  });
+      const infoWindow = new google.maps.InfoWindow({
+      content: description
+  });
+      marker.addListener('click', function() {
+      infoWindow.open(map, marker);
+  });
+}
+
+    function rotate90(){
+    	var heading = map.getHeading() || 0; 
+    	map.setHeading(heading+90); 
     }
+    
+    function autoRotate(){
+    	if (map.getTilt() !== 0){
+    		window.setInterval(rotate90, 3000); 
+    	}
+    }
+    
   </script>
+ 
   <style>
-    #map {
+  #map
+   {
       width: 500px;
       height: 500px;
       border: thin solid black;
+
+      
     }
   </style>
 </head>
 <body onload="createMap();">
-  <h1>Hello Google Maps</h1>
+  <h1>Dog Parks</h1>
   <div id="map"></div>
-  <p>This page shows a Google Map!</p>
 </body>
 </html>
+
