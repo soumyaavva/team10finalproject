@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {packages: ['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart(){
+        var book_data = new google.visualization.DataTable();
+        //define columns for the DataTable instance
+        book_data.addColumn('string', 'Animal Species');
+        book_data.addColumn('number', 'Votes');
+        var chart_options = {
+                          width: 800,
+                          height: 400
+            };
+        //add data to book_data
+        book_data.addRows([
+          ["Dog", 10],
+          ["Cat", 8],
+          ["Bunny", 4],
+          ["Snake", 2],
+        ]);
+        var chart = new google.visualization.BarChart(document.getElementById('book_chart'));
+        chart.draw(book_data, chart_options);
+    }
+</script>
+    <title>Favorite Animal</title>
+  </head>
+  <body>
+    <h1>Animal Chart</h1>
+    <div id = "book_chart"></div>
+  </body>
+</html>
