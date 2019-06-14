@@ -23,13 +23,17 @@ import com.google.codeu.data.Message;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.awt.Image;
+import java.net.URL;
+import javax.imageio.ImageIO;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Whitelist;
-
 
 /** Handles fetching and saving {@link Message} instances. */
 @WebServlet("/messages")
@@ -78,11 +82,28 @@ public class MessageServlet extends HttpServlet {
 
     String user = userService.getCurrentUser().getEmail();
     String userText = Jsoup.clean(request.getParameter("text"), Whitelist.none());
-        
+    String textWithImagesReplaced = userText;
+
+    // create pattern from regex
     String regex = "(https?://\\S+\\.(png|jpg))";
-    String replacement = "<img src=\"$1\" />";
-    String textWithImagesReplaced = userText.replaceAll(regex, replacement);
-        
+    Pattern pattern = Pattern.compile(regex);
+    
+    // find pattern in user text
+    Matcher match = pattern.matcher(userText);
+    if (match.find()) {
+      String imageUrl = match.group();
+      try {
+        Image image = ImageIO.read(new URL(imageUrl));
+        // only render if url is valid image
+        if (image != null) {
+          String replacement = "<img src=\"$1\" />";
+          textWithImagesReplaced = userText.replaceAll(regex, replacement);
+        }
+      } catch (Exception e) {
+        textWithImagesReplaced = "Invalid URL"; 
+      }
+    }
+
     Message message = new Message(user, textWithImagesReplaced);
     datastore.storeMessage(message);
 
