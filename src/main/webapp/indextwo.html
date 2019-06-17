@@ -5,14 +5,17 @@
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6Y0-tcNsyplbk2-NszcTxuxCcC_HGQb8"
   ></script>
   <script>
-    function createMap(){
-      const map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 37.422, lng: -122.084},
-        zoom: 16, 
-        mapTypeId: 'hybrid', 
-        heading: 90, 
-        tilt: 45
-      });
+ 
+
+  function createMap(){
+        const map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 37.422, lng: -122.084},
+          zoom: 16, 
+          mapTypeId: 'hybrid', 
+          heading: 90, 
+          tilt: 45
+        });
+
       
       addLandmark(map, 37.401620, -122.113010, 'Village Green Dog Park',
     		  'Village Green Dog Park' )
@@ -28,8 +31,6 @@
     		  'Main Street Dog Agility Park');
       addLandmark(map, 37.259950, -121.917800, 'RoyMButcher',
     		  'Roy M Butcher Dog Park' )
- 	  addLandmark(map, 37.259950, -122.159460, 'WillowOaks',
- 		     'This is Stan, the T-Rex statue.')
       addLandmark(map, 37.361090, -122.151200, 'WestwindCommunity',
     		  'Westwind Community Barn' );
 }
@@ -62,9 +63,12 @@
     
   </script>
  
-  <style>
+  
+ <style>
+ 
   #map
    {
+   	  top: 100px; 
       width: 500px;
       height: 500px;
       border: thin solid black;
@@ -72,10 +76,16 @@
       
     }
   </style>
+
+  <style type="text/css">
+div#map { margin: 0 auto 0 auto; }
+</style>
+
+<div id="map"><!-- contains map --></div>
 </head>
 <body onload="createMap();">
-  <h1>Dog Parks</h1>
-  <div id="map"></div>
+
 </body>
+
 </html>
 
