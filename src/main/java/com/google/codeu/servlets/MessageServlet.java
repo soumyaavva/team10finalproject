@@ -25,7 +25,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.servlet.annotation.WebServlet;
@@ -82,10 +82,46 @@ public class MessageServlet extends HttpServlet {
 
     String user = userService.getCurrentUser().getEmail();
     String userText = Jsoup.clean(request.getParameter("text"), Whitelist.none());
+    /*
     String textWithImagesReplaced = userText;
 
     // create pattern from regex
-    String regex = "(https?://\\S+\\.(png|jpg))";
+    String regex = "(https?://\\S+\\.\\S+)";
+    Pattern pattern = Pattern.compile(regex);
+    
+    // find pattern in user text
+    Matcher match = pattern.matcher(userText);
+    if (match.find()) {
+      System.out.println("match regex");
+      String imageUrl = match.group();
+      System.out.println(imageUrl);
+      try {
+        Image image = ImageIO.read(new URL(imageUrl));
+        // only render if url is valid image
+        if (image != null) {
+          System.out.println("NOT NULL IMAGE");
+          String replacement = "<img src=\"$1\" />";
+          textWithImagesReplaced = userText.replaceAll(regex, replacement);
+        }
+      } catch (Exception e) {
+        textWithImagesReplaced = "Invalid URL"; 
+      }
+    }
+    */
+
+    String textWithImagesReplaced = replaceImage(userText);
+    Message message = new Message(user, textWithImagesReplaced);
+    datastore.storeMessage(message);
+
+    response.sendRedirect("/user-page.html?user=" + user);
+  }
+
+  /** Replace any urls into images if possible */
+  public String replaceImage(String userText) {
+    String textWithImagesReplaced = userText;
+
+    // create pattern from regex
+    String regex = "(https?://\\S+\\.\\S+)";
     Pattern pattern = Pattern.compile(regex);
     
     // find pattern in user text
@@ -93,7 +129,7 @@ public class MessageServlet extends HttpServlet {
     if (match.find()) {
       String imageUrl = match.group();
       try {
-        Image image = ImageIO.read(new URL(imageUrl));
+        BufferedImage image = ImageIO.read(new URL(imageUrl));
         // only render if url is valid image
         if (image != null) {
           String replacement = "<img src=\"$1\" />";
@@ -103,10 +139,7 @@ public class MessageServlet extends HttpServlet {
         textWithImagesReplaced = "Invalid URL"; 
       }
     }
-
-    Message message = new Message(user, textWithImagesReplaced);
-    datastore.storeMessage(message);
-
-    response.sendRedirect("/user-page.html?user=" + user);
+    return textWithImagesReplaced;
   }
+
 }
