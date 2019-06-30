@@ -1,12 +1,62 @@
+
 <!DOCTYPE html>
 <html>
 <head>
   <title>Dog Parks</title>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6Y0-tcNsyplbk2-NszcTxuxCcC_HGQb8"
+  <style>
+  body{
+  background-color: #E6F8F9
+  }
+  </style>
+  
+  <style>
+   
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: right;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #4CAF50;
+}
+</style>
+  
+   </head>
+   <body>
+
+<ul>
+  <li><a class="active" href="#home">Home</a></li>
+  <li><a href="#news">News</a></li>
+  <li><a href="#contact">Contact</a></li>
+  <li><a href="#about">About</a></li>
+</ul>
+<img src= "Images/pinkpaw.png" width=160 height=55/>
+
+</body>
+  <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6Y0-tcNsyplbk2-NszcTxuxCcC_HGQb8"
   ></script>
   <script>
- 
-
+  
+  
   function createMap(){
         const map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 37.422, lng: -122.084},
@@ -69,8 +119,8 @@
   #map
    {
    	  top: 100px; 
-      width: 500px;
-      height: 500px;
+      width: 1000px;
+      height: 600px;
       border: thin solid black;
 
       
@@ -82,10 +132,10 @@ div#map { margin: 0 auto 0 auto; }
 </style>
 
 <div id="map"><!-- contains map --></div>
-</head>
+
 <body onload="createMap();">
 
 </body>
-
+</body>
 </html>
 
