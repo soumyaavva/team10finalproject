@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Maps</title>
+    <meta charset="UTF-8">
+  </head>
+  
+<style>
+#logo {
+   	position:absolute;
+    top:0px; 
+    left:10px;
+    width:90px;
+    height:88px;
+    overflow:hidden;
+	  
+}
+* {
+    padding: 0;
+    margin: 0;
+}
+nav{
+    background-color: #233647;
+    text-align: right;
+    padding: 20px;
+}
+nav li {
+    display: inline-block;
+    margin: 0 8px;
+    padding-top: 1px;
+}
+nav li a{
+    color: white;
+    padding: 11px;
+    text-decoration: none;
+    font-family: arial;
+}
+nav li a:hover{
+    background-color: white;
+    color: #233647;
+}
+</style>
+<body>
+<nav>
+<ul>
+   <li>
+<img src="Images/PawsomePlease.png" id="logo"></li>
+
+<li>
+	<li><a href="index.html">HOME</a></li>
+    <li><a href="aboutus.html">ABOUT US</a></li>
+    <li><a href="chart.html">CHARTS</a></li>
+    <li><a href="feed.html">PUBLIC FEED</a></li>
+    <li><a href="maps.html">MAPS</a></li>
+    <li><a href="stats.html">STATS</a></li>
+    <li><a href="user-page.html">PROFILE</a></li>
+    <li><a href="Login.html">LOGIN</a></li>
+</ul>
+</nav>
+</body>
+
+<script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6Y0-tcNsyplbk2-NszcTxuxCcC_HGQb8"
+  ></script>
+  <script>
+  
+ 
+  
+  function createMap(){
+        const map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 37.422, lng: -122.084},
+          zoom: 16, 
+          mapTypeId: 'hybrid', 
+          heading: 90, 
+          tilt: 45
+        });
+
+      
+      addLandmark(map, 37.401620, -122.113010, 'Village Green Dog Park',
+    		  'Village Green Dog Park' )
+ 	  addLandmark(map, 37.426770,-122.109860, 'Mitchell Park',
+      'Mitchell Park')
+      addLandmark(map, 37.363820, -122.039650, 'Las Palmas Dog Park',
+      'Las Palmas Dog Park');
+      addLandmark(map, 37.504530,  -121.997770, 'CentralParkDogPark',
+    		  'Central Park Dog Park')
+ 	  addLandmark(map, 37.268720, -121.951580, 'LosGatos',
+ 			 'Los Gatos Creek County Dog Park' )
+      addLandmark(map, 37.485150, -122.226200, 'MainStreet',
+    		  'Main Street Dog Agility Park');
+      addLandmark(map, 37.259950, -121.917800, 'RoyMButcher',
+    		  'Roy M Butcher Dog Park' )
+      addLandmark(map, 37.361090, -122.151200, 'WestwindCommunity',
+    		  'Westwind Community Barn' );
+}
+
+
+      function addLandmark(map, lat, lng, title, description){
+      const marker = new google.maps.Marker({
+      position: {lat: lat, lng: lng},
+      map: map,
+      title: title
+  });
+      const infoWindow = new google.maps.InfoWindow({
+      content: description
+  });
+      marker.addListener('click', function() {
+      infoWindow.open(map, marker);
+  });
+}
+
+    function rotate90(){
+    	var heading = map.getHeading() || 0; 
+    	map.setHeading(heading+90); 
+    }
+    
+    function autoRotate(){
+    	if (map.getTilt() !== 0){
+    		window.setInterval(rotate90, 3000); 
+    	}
+    }
+    
+  </script>
+ 
+  
+ <style>
+ 
+  #map
+   {
+   	  top: 100px; 
+      width: 1000px;
+      height: 600px;
+      border: thin solid black;
+
+      
+    }
+  </style>
+
+  <style type="text/css">
+div#map { margin: 0 auto 0 auto; }
+</style>
+
+<div id="map"><!-- contains map --></div>
+
+<body onload="createMap();">
+
+</body>
+</html>
