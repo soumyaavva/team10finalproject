@@ -1,5 +1,40 @@
 <!DOCTYPE html>
 <html>
+<style>
+#logo {
+   	position:absolute;
+    top:0px; 
+    left:10px;
+    width:90px;
+    height:88px;
+    overflow:hidden;
+	  
+}
+* {
+    padding: 0;
+    margin: 0;
+}
+nav{
+    background-color: #233647;
+    text-align: right;
+    padding: 20px;
+}
+nav li {
+    display: inline-block;
+    margin: 0 8px;
+    padding-top: 1px;
+}
+nav li a{
+    color: white;
+    padding: 11px;
+    text-decoration: none;
+    font-family: arial;
+}
+nav li a:hover{
+    background-color: white;
+    color: #233647;
+}
+</style>
   <head>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
@@ -28,6 +63,21 @@
     <title>Favorite Animal</title>
   </head>
   <body>
+  <nav>
+<ul>
+   <li>
+<li>
+	<li><a href="index.html">HOME</a></li>
+    <li><a href="aboutus.html">ABOUT US</a></li>
+    <li><a href="chart.html">CHARTS</a></li>
+    <li><a href="feed.html">PUBLIC FEED</a></li>
+    <li><a href="maps.html">MAPS</a></li>
+    <li><a href="stats.html">STATS</a></li>
+    <li><a href="user-page.html">PROFILE</a></li>
+    <li><a href="Login.html">LOGIN</a></li>
+</ul>
+</nav>
+
     <h1>Animal Chart</h1>
     <div id = "book_chart"></div>
   </body>
